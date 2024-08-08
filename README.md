@@ -28,7 +28,7 @@ Replace the placeholder MAC addresses with the actual MAC addresses of the devic
 ### IP Range to Scan
 Line 22: Set the network IP range that you want to scan.
 
-    target_ip = "10.0.1.0/24"    # Adjust this to your network range
+    target_ip = "10.0.0.0/24"    # Adjust this to your network range
 
 Adjust the target_ip variable to the correct IP range of your network. The script will scan this range to detect connected devices.
 
