@@ -3,7 +3,10 @@
 
 This Python script continuously scans a specified network range to detect connected devices, capturing their IP, MAC addresses, hostnames, and timestamps. It checks the detected MAC addresses against a predefined whitelist of trusted devices. If an untrusted device is found, the script sends a real-time alert to a specified Slack channel and logs the device information in the terminal with colored status indicators. The script runs in an infinite loop, performing scans every 60 seconds, and can be gracefully terminated with Ctrl+C.
 
-## Things to modify
+## Results
+<img width="829" alt="image" src="https://github.com/user-attachments/assets/c2fc450c-2377-44d4-b2b8-07212e5a39ca">
+
+## Things you need to modify
 ### Slack Information
 Line 8-10: Set your Slack API token and channel name.
 
@@ -38,3 +41,4 @@ Adjust the target_ip variable to the correct IP range of your network. The scrip
 1. IP Range: Set your network’s IP range on line 22.
 
 With these modifications, the script will scan the specified network, compare detected devices against your whitelist, and send a Slack notification if an untrusted device is found.
+
