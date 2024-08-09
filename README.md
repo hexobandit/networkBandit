@@ -6,7 +6,8 @@ This Python script continuously scans a specified network range to detect connec
 Bellow you can see examples how the app is running and what output it generates to the terminal and to the corresponding Slack app:
 
 #### networkBandit.py
-<img width="829" alt="image" src="https://github.com/user-attachments/assets/c2fc450c-2377-44d4-b2b8-07212e5a39ca">
+<img width="829" alt="image" src="https://github.com/user-attachments/assets/6f268446-354f-475a-bbba-5c6d747dbb82">
+
 
 #### Slack App
 <img width="829" alt="image" src="https://github.com/user-attachments/assets/e01b41ea-61f7-49e8-a21d-e5aa88ec9f59">
