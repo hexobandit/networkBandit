@@ -64,6 +64,6 @@ A malicious device could respond to ARP requests with a spoofed MAC address that
 If a network uses multiple VLANs or segments where broadcast traffic doesn’t reach all devices, some devices might not be detected. This is particularly problematic if the script is run on a different segment or VLAN from the malicious device.
 
 ### Mitigating the Issue
-To address these limitations, I'd nned to consider the following measures:
+To address these limitations, I'd need to consider the following:
 - **Active Probing:** Use additional network scanning methods, such as ICMP ping sweeps or TCP/UDP port scans, which do not rely on ARP responses.
 - **Network Anomaly Detection**: Implement network anomaly detection systems (NIDS) to identify unusual behavior, such as devices that are active but not responding to ARP requests.
