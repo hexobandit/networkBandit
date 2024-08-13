@@ -49,3 +49,30 @@ Adjust the target_ip variable to the correct IP range of your network. The scrip
 
 With these modifications, the script will scan the specified network, compare detected devices against your whitelist, and send a Slack notification if an untrusted device is found.
 
+# IMPORTANT:
+## Downside of the Script: 
+### Inability to Detect Disabled ARP Broadcast Response
+The script provided uses ARP (Address Resolution Protocol) requests to discover devices within the network by sending broadcast packets and waiting for responses. However, it has a significant downside: it cannot detect malicious devices that have disabled ARP broadcast responses. Here’s why:
+
+### ARP Broadcast Dependence:
+The script relies on devices responding to ARP broadcasts to identify their presence in the network. If a malicious actor configures their machine to ignore or disable ARP responses, the script will never detect that device since it won't receive any response from it.
+
+### Lack of Active Scanning:
+The script only passively waits for ARP replies. A malicious device that is deliberately hiding itself by not responding will remain undetected. The script does not attempt more aggressive scanning techniques, such as port scanning or probing specific IPs, which might help identify devices that don't respond to ARP.
+
+### Spoofing Risks:
+A malicious device could respond to ARP requests with a spoofed MAC address that matches an address in the whitelist. The script would then incorrectly classify this device as trusted.
+
+### Network-Specific Blind Spots:
+If a network uses multiple VLANs or segments where broadcast traffic doesn’t reach all devices, some devices might not be detected. This is particularly problematic if the script is run on a different segment or VLAN from the malicious device.
+
+Mitigating the Issue
+To address these limitations, I'd nned to consider the following measures:
+
+- Implement Active Probing: Use additional network scanning methods, such as ICMP ping sweeps or TCP/UDP port scans, which do not rely on ARP responses.
+- Monitor ARP Tables: Continuously monitor the ARP table on network devices, comparing it with known devices. This can help identify discrepancies if a device is silently present but not responding to ARP broadcasts.
+- Use Network Anomaly Detection: Implement network anomaly detection systems (NIDS) to identify unusual behavior, such as devices that are active but not responding to ARP requests.
+
+Combine with Other Detection Methods: Consider using network taps or traffic mirroring to monitor all traffic, even from devices that do not respond to ARP requests.
+
+Security Logging and Alerts: Log ARP requests and responses, and set alerts for when a device that was previously visible becomes silent or if there are any suspicious changes in ARP traffic patterns.
